@@ -28,9 +28,9 @@ function Chat() {
   }, []);
 
   return (
-    <div
+    <div 
       aria-hidden
-      className="absolute w-full h-full overflow-hidden grid md:grid-cols-[380px_1fr] dark:text-white/90"
+      className="absolute w-full h-full overflow-hidden grid md:grid-cols-[380px_1fr] dark:text-white/90 bg-blue"
       onClick={() => {
         // close all modals
         dispatch(setModal({ target: '*' }));
@@ -59,7 +59,7 @@ function Chat() {
       <modal.confirmDeleteChatAndInbox />
 
       <cont.foreground />
-      <cont.room />
+      {/* <cont.room /> */}
     </div>
   );
 }

@@ -30,7 +30,6 @@ function Monitor({
     user: { master },
     page,
   } = useSelector((state) => state);
-
   const isGroup = chatRoom.data.roomType === 'group';
   const isScrolled = useRef(false);
   const [loadingScroll, setLoadingScroll] = useState(false);
@@ -122,8 +121,10 @@ function Monitor({
     }
   };
 
+
+
   return (
-    <div
+    <div style={{height:"90vh",backgroundColor:"black"}}
       id="monitor"
       aria-hidden
       className={`
@@ -135,7 +136,7 @@ function Monitor({
       onScroll={handleInfiniteScroll}
     >
       {!loaded && (
-        <div className="absolute w-full h-full z-10 flex justify-center items-center bg-spill-100 dark:bg-spill-950">
+        <div className="absolute w-full h-full z-10 flex justify-center items-center bg-spill-100 dark:bg-red-950">
           <span className="flex gap-2 items-center">
             <i className="animate-spin">
               <bi.BiLoaderAlt size={18} />
@@ -164,13 +165,26 @@ function Monitor({
                     <div className="my-2 flex justify-center">
                       <span className="block py-0.5 px-2 rounded-full bg-white dark:bg-spill-800">
                         <p className="text-sm">
-                          {moment(elem.createdAt).format('LL')}
+                        {(() => {
+                    const createdAt = moment(elem.createdAt);
+                    const today = moment().startOf('day');
+                    const yesterday = moment().subtract(1, 'days').startOf('day');
+
+                    if (createdAt.isSame(today, 'day')) {
+                      return 'Today';
+                    } else if (createdAt.isSame(yesterday, 'day')) {
+                      return 'Yesterday';
+                    } else {
+                      return createdAt.format('LL');
+                    }
+                  })()}
                         </p>
+                        
                       </span>
                     </div>
                   )
                 }
-                <div
+                <div style={{display:"flex"}}
                   className={`
                     ${elem.userId !== arr[i + 1]?.userId && 'mb-2'}
                     ${selectedChats ? 'cursor-pointer' : ''}
@@ -188,8 +202,10 @@ function Monitor({
                     }
                   }}
                 >
+  
+                  
                   {selectedChats && (
-                    <span
+                    <span 
                       className={`${
                         selectedChats.includes(elem._id)
                           ? 'bg-sky-400 dark:bg-sky-600'
@@ -207,11 +223,11 @@ function Monitor({
                     } w-[560px] flex`}
                   >
                     {/* chat card */}
-                    <div
+                    <div 
                       className={`
                         ${
                           elem.userId === master._id
-                            ? ' ml-12 rounded-l-xl bg-sky-200 dark:bg-sky-600/40'
+                            ? ' ml-12 rounded-l-xl  bg-sky-200 dark:bg-sky-600/40'
                             : 'mr-12 rounded-r-xl bg-white dark:bg-spill-800'
                         }
                         ${
@@ -298,9 +314,12 @@ function Monitor({
                         </div>
                       )}
                       {/* chat body message */}
+                      
                       <div className="px-1">
+                     
                         {/* profile avatar in group chat */}
                         {isGroup && (
+                          
                           <span
                             className="truncate grid grid-cols-[auto_1fr] gap-2 items-start cursor-pointer"
                             aria-hidden
@@ -375,7 +394,7 @@ function Monitor({
               </React.Fragment>
             ))}
         {chats && !isGroup && !chatRoom.data.profile.active && (
-          <div className="py-2 px-6 flex justify-center border-0 border-y border-solid border-rose-400 dark:border-rose-200/60 bg-rose-400/10 dark:bg-rose-200/20">
+          <div className="py-2 px-6 flex justify-center border-0 border-y border-solid border-rose-400 dark:border-rose-200/60 bg-rose-400/10 dark:bg-black-200/20">
             <div className="w-[560px]">
               <p className="text-rose-900 dark:text-rose-100">
                 This account has been deleted by the owner, you no longer have

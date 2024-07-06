@@ -6,6 +6,7 @@ const SettingModel = require('../db/models/setting');
 const response = require('../helpers/response');
 
 exports.insert = async (req, res) => {
+  console.log("Data insert");
   try {
     const errData = {};
     const { username, fullname } = req.body;

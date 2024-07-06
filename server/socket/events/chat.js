@@ -12,6 +12,7 @@ const uniqueId = require('../../helpers/uniqueId');
 module.exports = (socket) => {
   // event when user sends message
   socket.on('chat/insert', async (args) => {
+    console.log(args)
     try {
       let fileId = null;
       let file;

@@ -35,6 +35,7 @@ function Minibox() {
             className="py-2 px-4 flex gap-4 items-center hover:bg-spill-100 dark:hover:bg-spill-600"
             onClick={() => {
               // close minibox
+              
               dispatch(setModal({ target: 'minibox' }));
 
               dispatch(

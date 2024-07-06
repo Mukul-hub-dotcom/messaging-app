@@ -12,9 +12,10 @@ import {
   touchAndHoldEnd,
 } from '../../../helpers/touchAndHold';
 import notification from '../../../helpers/notification';
-
+import { useNavigate } from 'react-router-dom';
 function Inbox({ inboxes, setInboxes }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     user: { master, setting },
     room: { chat: chatRoom },
@@ -135,12 +136,14 @@ function Inbox({ inboxes, setInboxes }) {
               hover:bg-spill-100/60 dark:hover:bg-spill-800/60
             `}
               onClick={() => {
+                
                 if (chatRoom.data?.roomId !== elem.roomId) {
+                  console.log("opop",chatRoom);
                   if (elem.roomType === 'private') {
                     const profile = elem.owners.find(
                       (x) => x.userId !== master._id
                     );
-
+                    
                     dispatch(
                       setChatRoom({
                         isOpen: true,
@@ -161,6 +164,7 @@ function Inbox({ inboxes, setInboxes }) {
                         },
                       })
                     );
+                    
                   } else {
                     dispatch(
                       setChatRoom({
@@ -171,6 +175,7 @@ function Inbox({ inboxes, setInboxes }) {
                     );
                   }
                 }
+                navigate('/room')
               }}
               onContextMenu={(e) => {
                 e.stopPropagation();

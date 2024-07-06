@@ -28,7 +28,7 @@ function Login({ setRespond }) {
       e.preventDefault();
       setProcess(true);
       const { data } = await axios.post('/users/login', form);
-
+      console.log(form,"new login data")
       // store jwt token on localStorage
       localStorage.setItem('token', data.payload);
       localStorage.setItem(

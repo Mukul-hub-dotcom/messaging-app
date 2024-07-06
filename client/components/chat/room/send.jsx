@@ -108,9 +108,10 @@ function Send({ setChats, setNewMessage, control }) {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-spill-900">
+    <div  className="fixed bottom-0 z-50 w-full bg-white dark:bg-spill-900">
       <AttachMenu />
-      <div className="px-2 h-16 grid grid-cols-[auto_1fr_auto] gap-2 items-center">
+      <div
+      className="px-2 h-16 grid grid-cols-[auto_1fr_auto] gap-2 items-center">
         <span className="flex">
           <button
             type="button"

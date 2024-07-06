@@ -39,7 +39,7 @@ function ForeGround() {
     <div
       className={`${
         chatRoom.isOpen && '-translate-x-full md:translate-x-0'
-      } transition w-full h-full relative z-10 grid grid-rows-[auto_1fr] overflow-hidden`}
+      } transition w-full h-full relative z-10 grid grid-rows-[auto_1fr] overflow-hidden bg-white`}
     >
       {
         // loading animation

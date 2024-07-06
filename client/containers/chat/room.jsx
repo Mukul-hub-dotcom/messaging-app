@@ -35,6 +35,7 @@ function Room() {
         params: { skip: 0, limit: control.limit },
         signal,
       });
+      console.log(data,"data");
 
       if (data.payload.length > 0) {
         setChats(data.payload);

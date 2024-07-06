@@ -120,11 +120,12 @@ function Header() {
   }, []);
 
   return (
-    <nav className="h-16 grid grid-cols-[1fr_auto] gap-4 justify-between items-center bg-white dark:bg-spill-900">
+    <nav 
+    className=" fixed w-full top-0 z-50 h-16 grid grid-cols-[1fr_auto] gap-4 justify-between items-center bg-black text-white  dark:bg-spill-900">
       <RoomHeaderMenu />
       {!selectedChats && (
         <>
-          <div className="pl-2 md:pl-4 flex gap-2 items-center">
+          <div className="pl-2 md:pl-4 flex gap-2 items-center ">
             <button
               type="button"
               className="block md:hidden p-2 rounded-full hover:bg-spill-100 dark:hover:bg-spill-800"
@@ -197,7 +198,7 @@ function Header() {
           <div className="pr-2 flex items-center">
             <button
               type="button"
-              className="p-2 rounded-full hover:bg-spill-100 dark:hover:bg-spill-800"
+              className="p-2 rounded-full  dark:hover:bg-spill-800"
               onClick={(e) => {
                 e.stopPropagation();
                 dispatch(setModal({ target: 'roomHeaderMenu' }));

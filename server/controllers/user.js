@@ -103,6 +103,7 @@ exports.verify = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
+  console.log(res,"new register data-be")
   try {
     const errData = {};
     const { username, password } = req.body;

@@ -25,7 +25,7 @@ function Register({ setRespond }) {
       setProcess(true);
 
       const { data } = await axios.post('/users/register', form);
-
+console.log(form,"new register data")
       // set success response
       setRespond({ success: true, message: data.message });
       // reset form

@@ -8,6 +8,7 @@ const response = require('../helpers/response');
 const Chat = require('../helpers/models/chats');
 
 exports.findByRoomId = async (req, res) => {
+  console.log("mkjk")
   try {
     const { skip, limit } = req.query;
 

@@ -9,6 +9,7 @@ import { setMaster, setSetting } from './redux/features/user';
 import socket from './helpers/socket';
 import config from './config';
 import { getSetting } from './api/services/setting.api';
+import Room from './containers/chat/room';
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ function App() {
       {loaded ? (
         <Routes>
           {inactive && <Route exact path="*" element={<route.inactive />} />}
+          <Route exact path="/room" element={<Room/>} />
           {!inactive && master ? (
             <Route
               exact

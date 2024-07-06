@@ -24,30 +24,30 @@ function RoomHeaderMenu() {
     <div
       className={`${
         modal.roomHeaderMenu ? 'z-10' : 'scale-0 -z-10'
-      } transition absolute right-0 top-0 w-52 py-2 rounded-md shadow-xl -translate-x-6 translate-y-14 bg-white dark:bg-spill-700`}
+      } transition absolute right-0 bg-black top-0 w-52 py-2 rounded-md shadow-xl -translate-x-6 translate-y-14  dark:bg-spill-700`}
       aria-hidden
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid">
+      <div className="grid" style={{border:"1px solid white", borderRadius:"5px"}}>
         {[
-          {
-            _key: 'k-01',
-            html: isGroup ? 'Group info' : 'Contact info',
-            icon: <bi.BiInfoCircle />,
-            action() {
-              const query = {};
+          // {
+          //   _key: 'k-01',
+          //   html: isGroup ? 'Group info' : 'Contact info',
+          //   icon: <bi.BiInfoCircle />,
+          //   action() {
+          //     const query = {};
 
-              if (!isGroup && !profile.active) {
-                return;
-              }
+          //     if (!isGroup && !profile.active) {
+          //       return;
+          //     }
 
-              query.target = isGroup ? 'groupProfile' : 'friendProfile';
-              query.data = isGroup ? group._id : profile.userId;
+          //     query.target = isGroup ? 'groupProfile' : 'friendProfile';
+          //     query.data = isGroup ? group._id : profile.userId;
 
-              dispatch(setPage(query));
-            },
-            style: '',
-          },
+          //     dispatch(setPage(query));
+          //   },
+          //   style: '',
+          // },
           {
             _key: 'k-02',
             html: 'Close chat',
@@ -63,15 +63,15 @@ function RoomHeaderMenu() {
             },
             style: '',
           },
-          {
-            _key: 'k-03',
-            html: 'Select messages',
-            icon: <bi.BiCheckCircle />,
-            action() {
-              dispatch(setSelectedChats([]));
-            },
-            style: '',
-          },
+          // {
+          //   _key: 'k-03',
+          //   html: 'Select messages',
+          //   icon: <bi.BiCheckCircle />,
+          //   action() {
+          //     dispatch(setSelectedChats([]));
+          //   },
+          //   style: '',
+          // },
           {
             _key: 'k-04',
             html: 'Delete chat',
@@ -108,7 +108,7 @@ function RoomHeaderMenu() {
           <button
             key={elem._key}
             type="button"
-            className={`${elem.style} py-2 px-4 flex gap-4 items-center cursor-pointer hover:bg-spill-200 dark:hover:bg-spill-600`}
+            className={`${elem.style} py-2 px-4 flex gap-4 items-center cursor-pointer   dark:hover:bg-spill-600`}
             onClick={() => {
               dispatch(setModal({ target: 'roomHeaderMenu' }));
               setTimeout(() => elem.action(), 150);

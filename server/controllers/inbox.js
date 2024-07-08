@@ -7,7 +7,27 @@ exports.find = async (req, res) => {
       { ownersId: req.user._id },
       req.query.search
     );
+    response({
+      res,
+      payload: inboxes,
+    });
+  } catch (error0) {
+    response({
+      res,
+      statusCode: error0.statusCode || 500,
+      success: false,
+      message: error0.message,
+    });
+  }
+};
 
+exports.findLeft = async (req, res) => {
+  try {
+    const inboxes = await Inbox.findLeft(
+      { ownersId: req.user._id },
+
+      req.query.search
+    );
     response({
       res,
       payload: inboxes,

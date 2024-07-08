@@ -220,7 +220,7 @@ function Monitor({
                   <div
                     className={`${
                       elem.userId === master._id && 'justify-end'
-                    } w-[560px] flex`}
+                    } w-full flex`}
                   >
                     {/* chat card */}
                     <div 

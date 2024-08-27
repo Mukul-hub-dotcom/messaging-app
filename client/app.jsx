@@ -51,7 +51,7 @@ function App() {
     const abortCtrl = new AbortController();
     // set default base url
     axios.defaults.baseURL = config.isDev
-      ? 'http://localhost:8080/api'
+      ? 'http://13.201.38.154:8080/api'
       : '/api';
     handleGetMaster(abortCtrl.signal);
 
